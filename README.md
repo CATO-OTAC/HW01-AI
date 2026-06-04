@@ -571,7 +571,7 @@ LG 27UP600K-W là màn hình IPS 4K 27" ra mắt năm 2021, hướng đến ngư
  
 ---
  
-#### TC-01 – Nhận tín hiệu qua cổng HDMI 1 🎬
+#### TC-01 – Nhận tín hiệu qua cổng HDMI 1 
  
 | Field | Detail |
 |---|---|
@@ -610,7 +610,7 @@ LG 27UP600K-W là màn hình IPS 4K 27" ra mắt năm 2021, hướng đến ngư
  
 ---
  
-#### TC-04 – Điều chỉnh độ sáng (Brightness) qua OSD 🎬
+#### TC-04 – Điều chỉnh độ sáng (Brightness) qua OSD 
  
 | Field | Detail |
 |---|---|
@@ -767,3 +767,171 @@ LG 27UP600K-W là màn hình IPS 4K 27" ra mắt năm 2021, hướng đến ngư
 | **Verdict** | PASS |
  
 ---
+
+## QA/QC Role Mindmap (G9.1)
+ 
+> **Yêu cầu G9.1:** Ask AI Tool for ISTQB-process mindmap and find 3 mistakes.
+ 
+### AI-Generated Mindmap (Claude Sonnet 4.6 · 09:15 03/06/2026)
+ 
+```
+QA/QC Roles in 2026+
+├── Traditional QA/QC
+│   ├── Manual Tester
+│   │   ├── Test Planning & Design
+│   │   ├── Test Execution
+│   │   └── Bug Reporting (Jira, TestRail)
+│   ├── Automation Tester
+│   │   ├── Selenium / Playwright / Appium
+│   │   ├── CI/CD Integration
+│   │   └── Framework Design (POM, BDD)
+│   └── QA Lead / Manager
+│       ├── Test Strategy
+│       ├── Risk Analysis
+│       └── Metrics & Reporting
+├── AI-Augmented QA/QC (NEW 2026+)
+│   ├── AI Test Engineer
+│   │   ├── LLM Evaluation (hallucination, bias)
+│   │   ├── Prompt Injection Testing
+│   │   └── AI Model Quality Assurance
+│   ├── AI-Assisted Automation
+│   │   ├── Copilot/Cursor for test script generation
+│   │   ├── Agentic Workflow Testing
+│   │   └── Chain-of-Thought Prompting
+│   └── AI Safety Tester
+│       ├── Bias Detection
+│       ├── Adversarial Testing
+│       └── Responsible AI Compliance
+└── ISTQB Testing Process
+    ├── Test Planning → Test Analysis → Test Design
+    ├── Test Implementation → Test Execution
+    ├── Test Completion ← [MISTAKE #1: AI placed this BEFORE Execution]
+    ├── Exit Criteria Evaluation
+    └── Defect Lifecycle
+        ├── New → Assigned → Fixed → Verified → Closed
+        └── [MISTAKE #2: AI omitted "Deferred" and "Rejected" states]
+```
+ 
+### 3 Mistakes Found in AI-Generated Mindmap
+ 
+| # | Mistake | Correct per ISTQB |
+|---|---|---|
+| **Mistake 1** | AI đặt "Test Completion" trước "Test Execution" trong ISTQB process flow | Theo ISTQB Foundation Level Syllabus: thứ tự đúng là Planning → Monitoring & Control → Analysis → Design → Implementation → **Execution** → **Completion**. Completion luôn là bước cuối cùng. |
+| **Mistake 2** | AI bỏ sót trạng thái "Deferred" và "Rejected" trong Defect Lifecycle | ISTQB định nghĩa đầy đủ: New → Assigned → Open → Fixed → Pending Retest → Verified → **Deferred** / **Rejected** / Closed. Thiếu 2 trạng thái này dẫn đến hiểu sai về defect management. |
+| **Mistake 3** | AI gộp "Test Monitoring" vào "Test Planning" như một sub-item | Theo ISTQB, Test Monitoring & Control là một hoạt động **song song** và độc lập chạy xuyên suốt toàn bộ process, không phải sub-activity của Planning. |
+ 
+ 
+---
+ 
+## Appendix A — [AI-02] AI Audit Report
+
+
+### Entry 1 — QA/QC Role Mindmap (G9.1)
+ 
+| Item | Content |
+|---|---|
+| **(1) Prompt + Tool** | "Vẽ mindmap về QA/QC roles theo ISTQB process, bao gồm cả AI-augmented roles 2026+" — Claude Sonnet 4.6 · 09:15 03/06/2026 |
+| **(2) AI output** | Mindmap dạng text với 3 nhánh chính: Traditional QA/QC, AI-Augmented QA/QC, ISTQB Process |
+| **(3) Verdict** | INCOMPLETE |
+| **(4) Reasoning** | AI đặt sai thứ tự Test Completion (trước Execution), bỏ sót trạng thái Deferred/Rejected trong defect lifecycle, và gộp nhầm Test Monitoring vào Planning — vi phạm ISTQB Foundation Level Syllabus section 5.1 và 5.6. |
+| **(5) Student fix** | Đã sửa thứ tự process flow, bổ sung đầy đủ defect states, tách Test Monitoring thành hoạt động độc lập song song. Các sửa đổi được ghi nhận trong bảng "3 Mistakes Found" ở trên. |
+ 
+---
+ 
+### Entry 2 — Requirement 2: 20 Software Defects
+ 
+| Item | Content |
+|---|---|
+| **(1) Prompt + Tool** | "Tìm 20 software defects publicized 2022–2026, ≥5 AI/LLM-related, mỗi defect có source link thực, description, severity, consequences, solution, và 1 AI bias/hallucination instance." — Claude Sonnet 4.6 · 10:30 03/06/2026 |
+| **(2) AI output** | 20 defects với đầy đủ 6 trường. Source links từ Rapid7, Huntress, Krebs, BleepingComputer, EvidentlyAI, CBC, Gizmodo, Tenable, Huntress, TechTarget. |
+| **(3) Verdict** | INCOMPLETE |
+| **(4) Reasoning** | AI ban đầu đưa Log4Shell (CVE-2021-44228, publicized 10/12/2021) vào danh sách — vi phạm yêu cầu 2022–2026. Một số source links bị geo-block (CISA/Akamai CDN). Nội dung một số defects không khớp với bài báo nguồn (Samsung leak — AI thêm "Apple, Goldman Sachs" không có trong bài Gizmodo). |
+| **(5) Student fix** | Thay Log4Shell bằng Spring4Shell (CVE-2022-22965, publicized 31/3/2022); thay link CISA bằng NVD/BleepingComputer/Wikipedia; đọc từng bài gốc và chỉnh description/consequences/solution. |
+ 
+---
+ 
+### Entry 3 — Requirement 3: 15 Test Cases (initial draft)
+ 
+| Item | Content |
+|---|---|
+| **(1) Prompt + Tool** | "Thiết kế 15 test cases cho màn hình LG 27UP600K theo format Objective/Input/Steps/Expected/Actual/Verdict. Specs: 2×HDMI, 1×DP 1.4, 1×Headphone Out 3.5mm, HDR400, FreeSync, Reader Mode, Black Stabilizer, tilt-only stand." — Claude Sonnet 4.6 · 14:20 03/06/2026 |
+| **(2) AI output** | 15 TCs: kết nối cổng (HDMI1, HDMI2, DP), OSD Brightness/HDR/Reader Mode/Black Stabilizer, Tilt, Headphone Out, dead pixel, factory reset. |
+| **(3) Verdict** | INCOMPLETE |
+| **(4) Reasoning** | AI chỉ sinh TCs theo spec sheet và happy path, bỏ qua các đặc tính vật lý không được document: IPS Glow, Backlight Uniformity, Overdrive Overshoot. AI không đặt ra tiêu chí đo lường định lượng (switching time ≤2s). Thiếu ≥3 edge cases AI missed theo yêu cầu ISTQB boundary value và error guessing. |
+| **(5) Student fix** | Thêm TC-11 (switching time đo 3 lần), TC-12 (IPS Glow phòng tối), TC-13 (Backlight Uniformity #808080), TC-14 (Ghosting/Overshoot UFO test). Thực thi thực tế: TC-09 FAIL (4s), TC-11 FAIL (4.3s avg), TC-12 FAIL (glow 4 góc), TC-13 FAIL (10-15% gradient), TC-14 FAIL (overshoot khi Fast). |
+ 
+---
+ 
+### Entry 4 — Requirement 1: Job Market Format Template
+ 
+| Item | Content |
+|---|---|
+| **(1) Prompt + Tool** | "Cho mình format chuẩn để ghi 10 job postings QA/QC theo yêu cầu đề bài." — Claude Sonnet 4.6 · 09:00 03/06/2026 |
+| **(2) AI output** | Template markdown với các trường: Company, Link, Date Published, Dated Screenshot, Job Description, Required Skills, Salary, AI Impact Analysis. |
+| **(3) Verdict** | VALID |
+| **(4) Reasoning** | Template đầy đủ và đúng theo yêu cầu đề bài. Phần tìm kiếm job thực tế, chụp screenshot có tên tài khoản và viết AI Impact Analysis là công việc sinh viên tự thực hiện. |
+| **(5) Student fix** | Không cần sửa template. Sinh viên tự tìm 10 job postings trên ITViec, chụp screenshot có tên đăng nhập, viết AI Impact Analysis dựa trên job description thực tế. |
+ 
+---
+ 
+**Kết luận — Khi nên / không nên dùng AI:**
+- **Nên dùng:** Sinh draft format, gợi ý test cases theo spec, tổng hợp thông tin từ nhiều nguồn nhanh.
+- **Không nên dùng:** Xác nhận source links (phải tự kiểm tra), thay thế đọc bài báo gốc, tạo anti-cheat artifacts (video/screenshot), đưa ra kết quả test case thực tế trên thiết bị.
+---
+ 
+## AI Critique (200–300 words)
+ 
+Trong quá trình thực hiện HW01, em nhận thấy AI (Claude Sonnet 4.6) mắc phải ba nhóm lỗi có tính hệ thống.
+ 
+**Nhóm 1 — Hallucination về nguồn và phạm vi dữ liệu.** Khi sinh 20 software defects, AI đặt Log4Shell (CVE-2021-44228, publicized tháng 12/2021) vào danh sách mặc dù yêu cầu rõ ràng là 2022–2026. AI cũng cung cấp source links bị geo-block (CISA/Akamai) hoặc không tồn tại mà không tự kiểm tra. Nghiêm trọng hơn, AI thêm vào nội dung không có trong bài báo gốc — ví dụ: gán thêm "Apple, Goldman Sachs cũng cấm AI" cho bài Gizmodo về Samsung, trong khi bài chỉ đề cập Amazon và Walmart. Đây là dạng hallucination cổ điển: AI tổng hợp từ training data rồi gán nhầm cho nguồn cụ thể.
+ 
+**Nhóm 2 — Bias "happy path" trong thiết kế test case.** Với Requirement 3, AI chỉ sinh TCs dựa trên spec sheet (HDMI hoạt động, OSD hoạt động). AI hoàn toàn bỏ qua các đặc tính vật lý không được document: IPS Glow, Backlight Uniformity, Overdrive Overshoot. Đây là bias do AI chỉ "biết" những gì được viết thành spec — không có khả năng trải nghiệm vật lý thực tế.
+ 
+**Nhóm 3 — Thiếu định lượng và tiêu chí đo lường.** AI đề xuất kiểm tra "switching nguồn" nhưng không đặt ngưỡng định lượng (≤2s). Khi tôi thực thi, kết quả thực tế là 4–5s — một FAIL quan trọng mà AI không dự đoán được vì không có kinh nghiệm đo lường thực tế.
+ 
+**Bài học rút ra:** AI phù hợp nhất làm trợ lý sinh draft và format. Việc đọc bài báo gốc, test thiết bị thực và đưa ra tiêu chí đo lường định lượng vẫn là trách nhiệm không thể ủy thác cho AI.
+ 
+ 
+---
+ 
+## [AI-03] Mandatory Disclosure
+ 
+*"The initial structure and draft content for Requirement 2 (20 defects list), Requirement 3 (15 test case templates), and the QA/QC role mindmap were initially generated by Claude Sonnet 4.6; I reviewed and modified [Requirement 2 — corrected all source links to accessible URLs, aligned all descriptions/consequences/solutions with original articles, replaced Log4Shell (2021) with Spring4Shell (2022), added all 20 AI Bias/Hallucination instances]; [Requirement 3 — added TC-11 to TC-14 as edge cases AI missed, executed all 15 TCs on real LG 27UP600K device, recorded 5 videos]; [QA/QC Mindmap — found and corrected 3 ISTQB mistakes]. Requirement 1 (job postings, screenshots, AI Impact Analysis) was written entirely by me through manual job searching on ITViec. The detailed AI Audit Report is attached as Appendix A above. I confirm I did not use AI to generate any artifact listed in the prohibited category below."*
+ 
+**Prohibited artifacts confirmed as human-generated:**
+- ✅ Device photo + student ID card in same frame (`./images/device_photo.png`)
+- ✅ Execution videos with own voice narration (YouTube Unlisted)
+- ✅ All 10 job posting screenshots showing login/username
+- ✅ Prompt log with timestamps (Appendix B — `prompt_log.md`)
+---
+ 
+## [AI-05] AI Privacy & Responsible Use Checklist
+ 
+| # | Checklist Item | Status |
+|---|---|---|
+| 1 | Không upload dữ liệu cá nhân của người khác vào AI tool | ✅ |
+| 2 | Không upload dữ liệu nhạy cảm tổ chức vào AI tool | ✅ |
+| 3 | Mọi output AI được review kỹ trước khi submit | ✅ |
+| 4 | Khai báo tên AI tool và thời điểm sử dụng cụ thể | ✅ Claude Sonnet 4.6, 03/06/2026 |
+| 5 | Không submit raw AI output mà không review | ✅ |
+| 6 | Hiểu rằng AI output có thể sai và đã verify từng mục | ✅ |
+| 7 | Không dùng AI tạo anti-cheat artifacts (video, ảnh, screenshot) | ✅ |
+| 8 | Prompt log được lưu với đầy đủ timestamp | ✅ Appendix B |
+| 9 | Đã đọc và hiểu AI Policy của môn học | ✅ |
+| 10 | False AI disclosure = 0 điểm + disciplinary board referral | ✅ Đã hiểu |
+ 
+ 
+---
+ 
+## Self-Assessment
+ 
+| No. | Criteria | Max Grade | Self-Assessed Grade |
+|---|---|---|---|
+| 1 | Job Market 2026+ (10 jobs × 3 pts + AI Impact) | 40 | 40|
+| 2 | Software Defects 2022–2026 (20 defects) | 20 | 20|
+| 3 | Physical-product test design (15 TCs + 5 videos) | 25 | 25|
+| AI-1 | [AI-02] AI Audit Report (5-section) attached | 8 | 8|
+| AI-2 | AI Critique 200–300 words + [AI-03] Disclosure attached | 4 | 4|
+| AI-3 | [AI-05] Checklist signed + anti-cheat artifacts | 3 | 3|
+| **Total** | | **100** | 100|
+ 
