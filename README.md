@@ -536,3 +536,234 @@
  
 **🤖 AI Bias / Hallucination Instance:** AI thường khẳng định chắc chắn rằng "Change Healthcare đã xác nhận trả $22 triệu tiền ransom". Bài TechTarget nêu rõ các nhà nghiên cứu phát hiện **khoản thanh toán** đến ví Bitcoin của BlackCat nhưng Change Healthcare **chưa xác nhận** công khai. Đây là sự khác biệt quan trọng — trình bày điều không được xác nhận như sự thật đã được khẳng định là một dạng hallucination.
  
+ ---
+ ## Requirement 3 – Test Cases for ONE Physical Product (40 pts)
+ 
+### Device Information
+ 
+| Field | Detail |
+|---|---|
+| **Brand** | LG |
+| **Model** | 27UP600K |
+| **Year (Manufactured)** | 2021 |
+| **Serial Number** | 504N****7896 |
+| **Device** | Màn hình máy tính LG 27UP600K-W |
+| **Panel / Size** | 27" IPS, 3840×2160 (4K UHD), 60Hz |
+| **Ports** | 2× HDMI, 1× DisplayPort 1.4, 1× Headphone Out 3.5mm |
+| **Key Features** | VESA DisplayHDR 400, DCI-P3 95%, AMD FreeSync, Reader Mode, Black Stabilizer, Super Resolution+, tilt-only stand |
+ 
+> 📷 **Anti-cheat:** ![Device](./images/device_photo.png)
+ 
+---
+ 
+### Mô tả thiết bị
+ 
+LG 27UP600K-W là màn hình IPS 4K 27" ra mắt năm 2021, hướng đến người dùng đồ hoạ và giải trí. Các tính năng cần test:
+ 
+- **Kết nối:** 2× HDMI 2.0, 1× DisplayPort 1.4, 1× Headphone Out 3.5mm
+- **Hình ảnh:** VESA DisplayHDR 400, DCI-P3 95%, Super Resolution+, Reader Mode, Black Stabilizer
+- **Gaming:** AMD FreeSync, Dynamic Action Sync
+- **Vật lý:** Tilt -5°~15°, không có height/swivel/pivot adjust
+- **Không có:** loa tích hợp, USB hub, USB-C
+---
+ 
+### Test Cases (15 TCs)
+ 
+---
+ 
+#### TC-01 – Nhận tín hiệu qua cổng HDMI 1 🎬
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh màn hình nhận và hiển thị đúng tín hiệu qua HDMI 1 ở độ phân giải 4K |
+| **Input / Precondition** | PC/laptop có cổng HDMI, cáp HDMI 2.0, màn hình đang tắt |
+| **Steps** | 1. Cắm cáp HDMI từ PC vào cổng HDMI 1 của màn hình.<br>2. Bật màn hình.<br>3. Chọn nguồn HDMI 1 qua OSD (nhấn joystick → Input).
+| **Expected Result** | Màn hình hiển thị desktop ở 3840×2160 (4K); không có nhiễu, tearing hay nhấp nháy. |
+| **Actual Result** | *Màn hình hiển thị 3840×2160 qua HDMI 1, không nhiễu* |
+| **Verdict** | PASS |
+
+---
+ 
+#### TC-02 – Nhận tín hiệu qua cổng HDMI 2
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh màn hình nhận và hiển thị đúng tín hiệu qua HDMI 2 ở độ phân giải 4K |
+| **Input / Precondition** | Màn hình đang hiển thị nguồn HDMI 1|
+| **Steps** | 1. Cắm thiết bị vào cổng HDMI 2.<br>2. Mở OSD → Input → HDMI 2.<br>3. Quan sát hình ảnh chuyển nguồn. |
+| **Expected Result** | Màn hình chuyển sang HDMI 2; hiển thị đúng nội dung với thiết bị. |
+| **Actual Result** | Màn hình chuyển sang HDMI 2; hiển thị đúng nội dung với thiết bị.  |
+| **Verdict** | PASS |
+ 
+---
+ 
+#### TC-03 – Nhận tín hiệu qua cổng DisplayPort 1.4
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh cổng DisplayPort 1.4 nhận đúng tín hiệu 4K@60Hz |
+| **Input / Precondition** | PC có GPU hỗ trợ DP 1.4, cáp DisplayPort |
+| **Steps** | 1. Cắm cáp DP vào cổng DisplayPort của màn hình.<br>2. Chọn nguồn DP qua OSD.<br>3. Vào Display Settings trên PC kiểm tra refresh rate. |
+| **Expected Result** | PC nhận diện màn hình ở 3840×2160 @ 60Hz; hình ảnh sắc nét, không artifacts. Refresh rate qua DP phải đạt 60Hz (HDMI 2.0 chỉ 30Hz ở 4K nếu dùng HDMI 1.4). |
+| **Actual Result** | Hình ảnh sắc nét, refresh rate đạt 60Hz |
+| **Verdict** | PASS |
+ 
+---
+ 
+#### TC-04 – Điều chỉnh độ sáng (Brightness) qua OSD 🎬
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh chức năng điều chỉnh Brightness qua OSD hoạt động đúng dải 0–100 |
+| **Input / Precondition** | Màn hình đang hiển thị tín hiệu HDMI, Brightness mặc định 100 |
+| **Steps** | 1. Nhấn joystick để mở OSD.<br>2. Điều hướng: Settings → Quick Settings → Brightness .<br>3. Giảm xuống 0, quan sát màn hình.<br>4. Đặt lại giá trị 100 và thoát OSD. |
+| **Expected Result** | Độ sáng thay đổi ngay lập tức theo từng bước; ở 0 màn hình tối nhưng không tắt hẳn; ở 100 đạt độ sáng tối đa ~400 nit; OSD đóng sau khi không thao tác. |
+| **Actual Result** | Độ sáng thay đổi theo điều chỉnh |
+| **Verdict** | PASS |
+
+---
+ 
+#### TC-05 – Bật/tắt chế độ HDR (VESA DisplayHDR 400)
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh chế độ HDR Auto hoạt động với nội dung HDR |
+| **Input / Precondition** | Nguồn HDMI/DP, nội dung HDR (YouTube HDR, Netflix HDR, hoặc game hỗ trợ HDR10) |
+| **Steps** | 1. Phát nội dung HDR trên PC.<br>2. Mở OSD → Picture → HDR → chọn Auto.<br>3. Quan sát biểu tượng HDR trên màn hình.<br>4. Tắt HDR → SDR, quan sát sự khác biệt. |
+| **Expected Result** | Khi bật HDR Auto: icon HDR xuất hiện, highlight sáng hơn, màu sắc vivid hơn. Khi tắt: trở về SDR bình thường. Lưu ý: HDR400 là entry-level, sự khác biệt không quá dramatic. |
+| **Actual Result** | Khi bật HDR highlight sáng hơn, màu sắc vivid hơn.|
+| **Verdict** | PASS |
+ 
+---
+ 
+#### TC-06 – Bật Reader Mode (lọc ánh sáng xanh)
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh Reader Mode giảm ánh sáng xanh và dễ đọc hơn |
+| **Input / Precondition** | Màn hình đang ở chế độ Custom, hiển thị văn bản |
+| **Steps** | 1. Mở OSD → Picture Mode → Reader.<br>2. Quan sát màu sắc màn hình thay đổi.<br>3. Đọc đoạn văn bản trong 30 giây.<br>4. Chuyển về Custom, so sánh. |
+| **Expected Result** | Màn hình chuyển sang tone vàng ấm (warm tint); văn bản vẫn rõ ràng dễ đọc; không có nhòe hay nhấp nháy. |
+| **Actual Result** | Màn hình chuyển sang tone ấm, không nhoè, không nhấp nháy |
+| **Verdict** | PASS |
+ 
+---
+ 
+#### TC-07 – Điều chỉnh góc nghiêng (Tilt -5° ~ +15°)
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh stand tilt hoạt động trong toàn bộ range và giữ nguyên vị trí |
+| **Input / Precondition** | Màn hình đang hiển thị, đặt trên bàn phẳng |
+| **Steps** | 1. Nghiêng màn hình ra sau đến góc tối đa (~15°) — kiểm tra có bị ngã không.<br>2. Nghiêng về trước tối đa (~5°).<br>3. Thả tay ở mỗi vị trí, kiểm tra màn hình có giữ góc không.<br>4. Trả về vị trí thẳng đứng. |
+| **Expected Result** | Màn hình nghiêng mượt mà trong range; chân đế không nhấc khỏi bàn; màn hình giữ nguyên góc sau khi thả tay. |
+| **Actual Result** | Màn hình nghiêng mượt mà, vẫn giữ nguyên góc sau khi thả tay |
+| **Verdict** | PASS |
+ 
+---
+ 
+#### TC-08 – Kiểm tra jack tai nghe 3.5mm (Headphone Out)
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh cổng headphone out xuất âm thanh từ nguồn tín hiệu HDMI/DP |
+| **Input / Precondition** | Tai nghe 3.5mm, PC đang phát audio qua HDMI vào màn hình |
+| **Steps** | 1. Cắm tai nghe vào cổng Headphone Out 3.5mm phía sau màn hình.<br>2. Phát nhạc/video từ PC.<br>3. OSD → Sound → Volume → điều chỉnh từ 0 đến 100.<br>4. Rút tai nghe. |
+| **Expected Result** | Âm thanh ra tai nghe rõ, không rè hay nhiễu; âm lượng thay đổi theo OSD. Màn hình không có loa tích hợp nên không có âm thanh khi rút tai nghe. |
+| **Actual Result** | Cổng headphone out xuất âm thanh rõ ràng |
+| **Verdict** | PASS |
+ 
+---
+ 
+#### TC-09 –  Chuyển nguồn liên tục nhanh HDMI1 → HDMI2 → DP 
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Kiểm tra màn hình xử lý đúng khi chuyển nguồn liên tục nhanh giữa 3 cổng |
+| **Input / Precondition** | Cả 3 cổng (HDMI 1, HDMI 2, DP) đều có thiết bị kết nối và đang phát tín hiệu |
+| **Steps** | 1. Chuyển HDMI1 → HDMI2 → DP → HDMI1 liên tục 5 lần, mỗi lần chờ 1 giây.<br>2. Quan sát thời gian switching và chất lượng hình ảnh sau mỗi lần.<br>3. Kiểm tra OSD có hiển thị đúng tên nguồn không. |
+| **Expected Result** | Mỗi lần chuyển nguồn hiển thị đúng trong ≤2s; không bị mắc kẹt ở black screen; OSD hiển thị đúng tên nguồn; không cần tắt bật lại màn hình. |
+| **Actual Result** | Mỗi lần chuyển nguồn hiển thị trong 4s |
+| **Verdict** | FAIL |
+ 
+---
+ 
+#### TC-10 –  Tự động tắt màn hình khi không có tín hiệu (No Signal)
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh màn hình hiển thị thông báo "No Signal" và tự tắt sau khi mất tín hiệu |
+| **Input / Precondition** | Màn hình đang hiển thị tín hiệu HDMI bình thường |
+| **Steps** | 1. Rút cáp HDMI ra khỏi màn hình (hoặc tắt PC).<br>2. Quan sát màn hình ngay lập tức.<br>3. Chờ 10–15 giây, quan sát tiếp. |
+| **Expected Result** | Màn hình hiển thị thông báo "No Signal" hoặc tên cổng đang dùng; sau đó tự tắt/sleep trong ≤15s. |
+| **Actual Result** | Màn hình tự động tắt |
+| **Verdict** | PASS |
+---
+ 
+#### TC-11 – Switching nguồn: đo thời gian chính xác 
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Đo thời gian switching chính xác để xác định có vượt ngưỡng ≤2s không |
+| **Input / Precondition** | HDMI 1 và HDMI 2 đều có thiết bị đang phát tín hiệu |
+| **Steps** | 1. Đang ở nguồn HDMI 1, bấm đồng hồ bấm giờ.<br>2. Chuyển sang HDMI 2 qua OSD.<br>3. Dừng đồng hồ khi hình ảnh xuất hiện — ghi lại.<br>4. Lặp lại 3 lần, tính trung bình. |
+| **Expected Result** | Thời gian switching trung bình ≤2s. |
+| **Actual Result** | HDMI1→HDMI2 lần 1: 4s; lần 2: 4s; lần 3: 5s — trung bình **4.3s**, vượt ngưỡng ≤2s |
+| **Verdict** | FAIL |
+| **Notes** | 🐛 **Defect #2:** Switching nguồn chậm (4–5s). 🤖 **AI missed:** AI test từng cổng độc lập mà không đo thời gian switching thực tế. 🎬 Quay video kèm đồng hồ bấm giờ. |
+ 
+---
+ 
+#### TC-12 –  IPS Glow ở góc nhìn trong phòng tối 
+| Field | Detail |
+|---|---|
+| **Objective** | Ghi nhận mức độ IPS Glow — đặc tính vật lý không có trong spec sheet |
+| **Input / Precondition** | Phòng tối hoàn toàn; hiển thị ảnh nền đen #000000 toàn màn hình |
+| **Steps** | 1. Mở ảnh nền đen full screen, tắt đèn phòng.<br>2. Nhìn thẳng — quan sát 4 góc màn hình.<br>3. Nghiêng đầu 45° sang trái — nhìn vào góc phải dưới.<br>4. Chụp ảnh để ghi nhận. |
+| **Expected Result** | IPS Glow nhỏ, chỉ xuất hiện tại góc, không lan quá ¼ diện tích màn hình. |
+| **Actual Result** | IPS Glow xuất hiện ở cả 4 góc, rõ nhất ở góc dưới trái và phải, lan khoảng ⅙ diện tích |
+| **Verdict** | FAIL |
+| **Notes** | 🐛 **Defect #3:** IPS Glow mức trung bình — rõ khi xem nội dung tối trong phòng tối. 🤖 **AI missed:** IPS Glow không xuất hiện trong spec sheet, AI bỏ qua hoàn toàn. |
+ 
+---
+ 
+#### TC-13 –  Backlight Uniformity (độ đồng đều sáng) 
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Kiểm tra độ sáng có đồng đều trên toàn bộ 27" hay không |
+| **Input / Precondition** | Hiển thị màu xám đồng nhất #808080 toàn màn hình; không có ánh sáng chiếu thẳng vào màn |
+| **Steps** | 1. Mở ảnh xám #808080 full screen.<br>2. Quan sát từng vùng: góc trên trái, trên phải, dưới trái, dưới phải, giữa.<br>3. So sánh độ sáng giữa trung tâm và 4 góc.<br>4. Chụp ảnh ghi nhận. |
+| **Expected Result** | Độ sáng đồng đều; không có vùng sáng/tối hơn rõ rệt so với trung tâm. |
+| **Actual Result** | Vùng trung tâm sáng hơn 4 góc — gradient nhẹ từ giữa ra rìa, góc tối hơn trung tâm ~10-15% |
+| **Verdict** | FAIL |
+| **Notes** | 🐛 **Defect #4:** Backlight không đồng đều — phổ biến với IPS 27" tầm trung nhưng vẫn là deviation so với expected. 🤖 **AI missed:** Uniformity không xuất hiện trong feature list, AI không nghĩ đến. |
+ 
+---
+ 
+#### TC-14 –  Ghosting/Overshoot khi bật Overdrive 
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Kiểm tra hiện tượng ghosting và overshoot ở các mức Overdrive |
+| **Input / Precondition** | Màn hình kết nối PC, mở testufo.com trên trình duyệt |
+| **Steps** | 1. Mở testufo.com, chạy UFO test 60fps.<br>2. OSD → Game Adjust → Response Time → OFF: quan sát ghosting.<br>3. Chuyển sang Fast: quan sát lại.<br>4. Ghi nhận có overshoot (corona sáng theo sau) không. |
+| **Expected Result** | Ghosting ở mức chấp nhận được; không có overshoot rõ ràng ở bất kỳ mức Overdrive nào. |
+| **Actual Result** | Overdrive OFF: ghosting nhẹ. Overdrive Fast: ghosting giảm nhưng xuất hiện overshoot (corona trắng) rõ theo sau vật thể |
+| **Verdict** | FAIL |
+| **Notes** | 🐛 **Defect #5:** Overshoot (inverse ghosting) khi bật Overdrive Fast. 🤖 **AI missed:** AI chỉ nhìn spec "5ms GtG", không test behavior thực tế ở các mức overdrive. 🎬 Quay video màn hình khi chạy UFO test. |
+ 
+---
+ 
+#### TC-15 – Kiểm tra dead pixel toàn màn hình 
+ 
+| Field | Detail |
+|---|---|
+| **Objective** | Xác minh không có dead pixel hoặc stuck pixel trên toàn bộ 27" |
+| **Input / Precondition** | Màn hình đang hiển thị tín hiệu 4K, phòng đủ sáng |
+| **Steps** | 1. Mở lần lượt các màn hình đơn sắc: đỏ (#FF0000), xanh lá (#00FF00), xanh dương (#0000FF), trắng (#FFFFFF), đen (#000000).<br>2. Quan sát kỹ toàn bộ diện tích 27" ở mỗi màu.<br>3. Ghi nhận vị trí bất kỳ điểm bất thường (tọa độ, màu sắc). |
+| **Expected Result** | Không có dead pixel (điểm luôn đen) hay stuck pixel (điểm luôn sáng sai màu) trên toàn bộ màn hình. |
+| **Actual Result** | Không có dead pixel |
+| **Verdict** | PASS |
+ 
+---
